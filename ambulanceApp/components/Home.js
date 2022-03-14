@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Example from './Modal';
 
 
-function Home(){
+export default Home=()=>{
     return(
         <SafeAreaView style={{height: '100%', width: '100%'}}>
             <View style={styles.container}>
@@ -51,7 +51,7 @@ function Home(){
         </SafeAreaView>
     )
 }
-export default Home;
+
 const styles = StyleSheet.create({
     body:{
         flex: 1

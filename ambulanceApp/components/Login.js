@@ -7,23 +7,20 @@ import { Button, Modal, FormControl, Input, Center, NativeBaseProvider } from "n
 import Home from './Home';
 import { useTogglePasswordVisibility } from './Eyepass';
 import {strings} from './Lozalization'
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 
 
 
-export default () => {
-    return(
-        <NativeBaseProvider>
-            <Center flex={1} px="3">
-                <Login/>
-            </Center>
-        </NativeBaseProvider>
-    )
-}
 
-const Login =()=>{
+
+export default Login =({navigation})=>{
+    const [state,setState] = useState({isLoading: false});
+
+    
     const signin =()=>{
         if(user != "" && pass != ""){
-            this.props.navigation.navigate('Home');
+           navigation.navigate("Home")
+           
         }else{
             Alert.alert('Thông báo!','Không được để trống thông tin!',[
                 {
@@ -36,20 +33,29 @@ const Login =()=>{
     const [user,setuser] = useState('');
     const [pass,setpass] = useState('');
     
-    const overLang=()=>
+    const overLangVN=()=>
     {
         strings.setLanguage('en-VN');
+        setState({isLoading: true});
+        
+    }
+    const overLangUS=()=>
+    {
+        strings.setLanguage('en-US');
+        setState({isLoading: true});
         
     }
     return(
+        <NativeBaseProvider>
+            <Center flex={1} px="3">
         <SafeAreaView style={{height: '100%', width: '100%'}}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.vietnam} onPress={()=>{overLang()}}>
+                <TouchableOpacity style={styles.vietnam} onPress={()=>{overLangVN()}}>
                 <Image
                     source={require('../android/app/src/main/res/drawable/vietnam.png')}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.usa} onPress={()=>{strings.setLanguage('en-US')}}>
+                <TouchableOpacity style={styles.usa} onPress={()=>{overLangUS()}}>
                 <Image
                     source={require('../android/app/src/main/res/drawable/usa.png')}
                     />
@@ -70,10 +76,12 @@ const Login =()=>{
                 } 
                 />
             </View>
-            <Button style={styles.btnlogin} onPress={signin} >
+            <Button style={styles.btnlogin} onPress = {signin} >
                   {strings.btn}
             </Button>
         </SafeAreaView>
+        </Center>
+        </NativeBaseProvider>
     )
 }
 

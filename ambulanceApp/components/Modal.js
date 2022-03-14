@@ -31,7 +31,7 @@ const Example = () => {
         <Icon 
                 name="plus-circle"
                 size={50}
-                color='red'
+                color='red'                
                 type="octicon"/>
         </TouchableOpacity>
         </View>
