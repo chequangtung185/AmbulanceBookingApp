@@ -36,13 +36,13 @@ export default Login =({navigation})=>{
     const overLangVN=()=>
     {
         strings.setLanguage('en-VN');
-        setState({isLoading: true});
+        this.setState({isLoading: true});
         
     }
     const overLangUS=()=>
     {
         strings.setLanguage('en-US');
-        setState({isLoading: true});
+        this.setState({isLoading: true});
         
     }
     return(

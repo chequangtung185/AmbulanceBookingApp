@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         marginLeft: 175
     },
     text:{
-      fontSize: 20,
+      fontSize: 18,
       color:'black',
       position: 'absolute',
       marginLeft: 25
